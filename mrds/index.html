@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mrds-MRDS模型资源_医学数据共享平台</title>
+<meta name="description" content="mrds 是一个医学影像数据共享与模型资源平台，提供数据集的检索、元数据说明、版本记录与模型下载入口，帮助研究与工程团队找到可复用的医学数据资源。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e4d63'/%3E%3Ccircle cx='24' cy='26' r='7' fill='%237ed6c4'/%3E%3Ccircle cx='42' cy='38' r='7' fill='%23f2b544'/%3E%3Cpath d='M24 33v9a9 9 0 009 9h2' stroke='%23ffffff' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#10232b;
+    --ink-2:#3c5763;
+    --deep:#0e4d63;
+    --deep-2:#0a3a4b;
+    --aqua:#7ed6c4;
+    --amber:#f2b544;
+    --paper:#f6f8f7;
+    --card:#ffffff;
+    --line:#dbe5e4;
+    --radius:14px;
+    --shadow:0 10px 28px rgba(14,77,99,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--paper);color:var(--ink);line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  .wrap{width:min(1140px,92vw);margin:0 auto}
+
+  /* Header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,248,247,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:14px 0;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.28rem;letter-spacing:.02em;color:var(--deep-2)}
+  .brand-mark{width:34px;height:34px;flex:0 0 34px}
+  nav.links{display:flex;gap:22px;flex-wrap:wrap;font-size:.94rem;color:var(--ink-2)}
+  nav.links a{padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.links a:hover,nav.links a:focus{border-color:var(--aqua);color:var(--deep)}
+  .nav-cta{
+    background:var(--deep);color:#fff;padding:9px 18px;border-radius:999px;
+    font-size:.9rem;font-weight:600;transition:.2s;
+  }
+  .nav-cta:hover,.nav-cta:focus{background:var(--deep-2)}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(160deg,#0e4d63 0%,#0a3a4b 60%,#123f4f 100%);
+    color:#eaf5f3;padding:64px 0 72px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:auto -120px -160px auto;
+    width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(126,214,196,.28),transparent 68%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--aqua);border:1px solid rgba(126,214,196,.45);border-radius:999px;
+    padding:5px 14px;margin-bottom:20px;
+  }
+  h1{font-size:clamp(2.2rem,5.2vw,3.4rem);line-height:1.12;letter-spacing:-.01em;font-weight:800;margin-bottom:18px}
+  .hero p.lead{font-size:1.06rem;color:#c9dfdb;max-width:34em;margin-bottom:28px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 24px;border-radius:999px;font-size:.95rem;font-weight:600;transition:.2s;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--aqua);color:#073340}
+  .btn-primary:hover,.btn-primary:focus{background:#a2e6d8}
+  .btn-ghost{background:transparent;color:#eaf5f3;border-color:rgba(234,245,243,.4)}
+  .btn-ghost:hover,.btn-ghost:focus{border-color:var(--aqua);color:var(--aqua)}
+  .hero-stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+  .hero-stats div{font-size:.86rem;color:#a9c8c5}
+  .hero-stats strong{display:block;font-size:1.6rem;color:#fff;font-weight:800;line-height:1.3}
+  .hero-figure{
+    background:rgba(255,255,255,.05);border:1px solid rgba(126,214,196,.28);
+    border-radius:22px;padding:22px;
+  }
+  .hero-figure figcaption{font-size:.78rem;color:#a9c8c5;margin-top:12px;letter-spacing:.04em}
+
+  /* Section base */
+  section{padding:64px 0}
+  .sec-head{max-width:44em;margin-bottom:36px}
+  .kicker{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);font-weight:700;margin-bottom:10px}
+  h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.3;font-weight:800;letter-spacing:-.01em;color:var(--deep-2)}
+  .sec-head p{margin-top:12px;color:var(--ink-2);font-size:.98rem}
+
+  /* Search + filter */
+  .toolbar{
+    display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px;box-shadow:var(--shadow);margin-bottom:28px;
+  }
+  .toolbar input[type=search]{
+    flex:1 1 240px;min-width:0;padding:11px 16px;border:1px solid var(--line);
+    border-radius:10px;font-size:.95rem;font-family:inherit;background:#fbfdfc;color:var(--ink);
+  }
+  .toolbar input[type=search]:focus{outline:2px solid var(--aqua);outline-offset:1px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{
+    border:1px solid var(--line);background:#fbfdfc;color:var(--ink-2);
+    padding:8px 15px;border-radius:999px;font-size:.85rem;cursor:pointer;font-family:inherit;transition:.2s;
+  }
+  .chip:hover{border-color:var(--aqua)}
+  .chip[aria-pressed="true"]{background:var(--deep);border-color:var(--deep);color:#fff}
+
+  /* Dataset cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;
+    transition:transform .2s,border-color .2s;
+  }
+  .card:hover{transform:translateY(-3px);border-color:#bcd8d3}
+  .card .tag{
+    align-self:flex-start;font-size:.74rem;letter-spacing:.06em;font-weight:700;
+    color:var(--deep);background:#e5f4f0;border-radius:6px;padding:3px 9px;
+  }
+  .card h3{font-size:1.1rem;font-weight:700;line-height:1.4;color:var(--deep-2)}
+  .card p{font-size:.9rem;color:var(--ink-2)}
+  .card dl{display:flex;gap:18px;flex-wrap:wrap;font-size:.8rem;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
+  .card dt{font-weight:700;color:var(--deep);display:inline}
+  .card dd{display:inline;margin-left:4px}
+  .card .card-link{font-size:.86rem;font-weight:700;color:var(--deep);display:inline-flex;gap:6px;align-items:center}
+  .card .card-link:hover{color:var(--deep-2)}
+  .empty{grid-column:1/-1;text-align:center;color:var(--ink-2);font-size:.95rem;padding:32px 0}
+
+  /* Download panel */
+  .panel{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:36px;display:grid;grid-template-columns:1.3fr .7fr;gap:36px;align-items:center;
+    box-shadow:var(--shadow);
+  }
+  .panel h2{margin-bottom:12px}
+  .panel p{color:var(--ink-2);font-size:.95rem;margin-bottom:10px}
+  .panel ul{list-style:none;display:grid;gap:8px;margin:16px 0 24px;font-size:.9rem;color:var(--ink-2)}
+  .panel li{display:flex;gap:10px;align-items:flex-start}
+  .panel li::before{content:"";flex:0 0 8px;height:8px;margin-top:9px;border-radius:2px;background:var(--aqua)}
+  .btn-disabled{
+    background:#c9d6d4;color:#5c7570;pointer-events:none;cursor:not-allowed;
+  }
+  .panel-art{display:flex;justify-content:center}
+
+  /* Notes */
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+  .note h3{font-size:1.05rem;color:var(--deep-2);margin-bottom:10px}
+  .note p{font-size:.92rem;color:var(--ink-2)}
+  .note p + p{margin-top:10px}
+
+  /* Footer */
+  footer.site{
+    background:var(--deep-2);color:#c3d9d6;padding:48px 0 32px;font-size:.88rem;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px}
+  footer .brand{color:#fff;margin-bottom:12px}
+  footer h4{color:#fff;font-size:.9rem;letter-spacing:.06em;margin-bottom:12px}
+  footer ul{list-style:none;display:grid;gap:8px}
+  footer a:hover,footer a:focus{color:var(--aqua)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.8rem;color:#8fb0ac}
+
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .panel{grid-template-columns:1fr;padding:28px}
+    .panel-art{order:-1}
+    .notes{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .nav{padding:12px 0}
+    nav.links{gap:14px;font-size:.86rem;order:3;width:100%}
+    .hero{padding:44px 0 52px}
+    .hero-stats{gap:20px}
+    section{padding:46px 0}
+    .cards{grid-template-columns:1fr}
+    .toolbar{padding:12px}
+    .foot-grid{grid-template-columns:1fr}
+    .panel{padding:22px}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="mrds 首页">
+      <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0e4d63"/>
+        <circle cx="24" cy="26" r="7" fill="#7ed6c4"/>
+        <circle cx="42" cy="38" r="7" fill="#f2b544"/>
+        <path d="M24 33v9a9 9 0 009 9h2" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span>mrds</span>
+    </a>
+    <nav class="links" aria-label="主导航">
+      <a href="#datasets">数据集</a>
+      <a href="#download">资源下载</a>
+      <a href="#notes">使用须知</a>
+      <a href="#about">关于平台</a>
+    </nav>
+    <a class="nav-cta" href="#datasets">检索资源</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Medical Resource Data Sharing</span>
+        <h1>mrds</h1>
+        <p class="lead">mrds 是一个面向医学影像与临床研究的数据资源平台，把分散的数据集整理成可检索、可追溯的条目：每份资源都附带采集来源、标注口径与版本记录，方便研究团队在下载前判断能否复用。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#datasets">浏览数据集</a>
+          <a class="btn btn-ghost" href="#download">获取资源包</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>3</strong>已公开数据集条目</div>
+          <div><strong>2</strong>影像与文本两类模态</div>
+          <div><strong>逐版</strong>变更记录可查</div>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <svg viewBox="0 0 320 240" role="img" aria-label="mrds 数据资源结构示意：原始影像经标注与元数据整理后形成可下载资源包">
+          <rect x="0" y="0" width="320" height="240" rx="16" fill="#0a3a4b"/>
+          <g opacity="0.9">
+            <rect x="24" y="80" width="56" height="56" rx="8" fill="#123f4f" stroke="#7ed6c4" stroke-width="2"/>
+            <circle cx="52" cy="108" r="14" fill="none" stroke="#7ed6c4" stroke-width="2"/>
+            <rect x="132" y="52" width="56" height="56" rx="8" fill="#123f4f" stroke="#f2b544" stroke-width="2"/>
+            <path d="M146 88l12-14 10 12 8-8" stroke="#f2b544" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="132" y="140" width="56" height="56" rx="8" fill="#123f4f" stroke="#7ed6c4" stroke-width="2"/>
+            <path d="M146 158h28M146 168h28M146 178h18" stroke="#7ed6c4" stroke-width="2" stroke-linecap="round"/>
+            <rect x="240" y="92" width="56" height="56" rx="8" fill="#7ed6c4"/>
+            <path d="M258 120l10 10 18-20" stroke="#0a3a4b" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M80 108h52M188 108h52" stroke="#5d8a92" stroke-width="2" stroke-dasharray="4 5"/>
+            <path d="M160 108v32" stroke="#5d8a92" stroke-width="2" stroke-dasharray="4 5"/>
+          </g>
+        </svg>
+        <figcaption>影像 → 标注与元数据 → 版本化资源包</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Datasets -->
+  <section id="datasets">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">资源目录</div>
+        <h2>按模态与用途查找 mrds 数据集</h2>
+        <p>每个条目说明数据内容、标注方式与限制条件。输入关键词可过滤名称与描述，标签按钮用于快速缩小范围。</p>
+      </div>
+
+      <div class="toolbar">
+        <input id="q" type="search" placeholder="搜索数据集名称或描述，例如：影像、随访" aria-label="搜索数据集">
+        <div class="chips" role="group" aria-label="按模态筛选">
+          <button class="chip" data-filter="all" aria-pressed="true">全部</button>
+          <button class="chip" data-filter="影像" aria-pressed="false">影像</button>
+          <button class="chip" data-filter="文本" aria-pressed="false">文本</button>
+        </div>
+      </div>
+
+      <div class="cards" id="grid">
+        <article class="card" data-tags="影像">
+          <span class="tag">影像 · 公开</span>
+          <h3>胸部 CT 层厚重建样本集</h3>
+          <p>收录多层螺旋 CT 的薄层与厚层重建对照数据，附带窗宽窗位参数，适合重建算法与显示流程的对比实验。</p>
+          <dl>
+            <div><dt>模态</dt><dd>CT</dd></div>
+            <div><dt>标注</dt><dd>区域框</dd></div>
+            <div><dt>版本</dt><dd>v1.2</dd></div>
+          </dl>
+          <a class="card-link" href="#download">查看条目 →</a>
+        </article>
+
+        <article class="card" data-tags="文本">
+          <span class="tag">文本 · 受限</span>
+          <h3>随访记录结构化字段集</h3>
+          <p>把非结构化随访描述整理为可统计字段，包含就诊时间、检查项目与结论分类，字段定义随包附说明。</p>
+          <dl>
+            <div><dt>模态</dt><dd>文本</dd></div>
+            <div><dt>标注</dt><dd>字段映射</dd></div>
+            <div><dt>版本</dt><dd>v0.9</dd></div>
+          </dl>
+          <a class="card-link" href="#download">查看条目 →</a>
+        </article>
+
+        <article class="card" data-tags="影像">
+          <span class="tag">影像 · 公开</span>
+          <h3>超声切面识别练习集</h3>
+          <p>按解剖切面分组的超声帧序列，配切面名称标签，用于切面分类与教学演示，不含患者身份信息。</p>
+          <dl>
+            <div><dt>模态</dt><dd>超声</dd></div>
+            <div><dt>标注</dt><dd>切面标签</dd></div>
+            <div><dt>版本</dt><dd>v1.0</dd></div>
+          </dl>
+          <a class="card-link" href="#download">查看条目 →</a>
+        </article>
+
+        <p class="empty" id="empty" hidden>没有匹配的条目，请更换关键词或切换为「全部」。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download">
+    <div class="wrap">
+      <div class="panel">
+        <div>
+          <div class="kicker">资源包</div>
+          <h2>下载 mrds 资源索引与字段说明</h2>
+          <p>资源包包含条目清单、字段字典与版本差异表，用于离线核对数据集范围。下载前请先阅读使用须知中的授权与引用要求。</p>
+          <ul>
+            <li>清单为 CSV 格式，可直接导入表格工具筛选</li>
+            <li>字段字典说明每个列名的取值口径</li>
+            <li>版本差异表记录条目增删与字段调整</li>
+          </ul>
+          <a class="btn btn-primary btn-disabled" href="#" download data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+        </div>
+        <div class="panel-art">
+          <svg viewBox="0 0 220 200" role="img" aria-label="mrds 资源包文件示意" width="200">
+            <rect x="0" y="0" width="220" height="200" rx="16" fill="#e5f4f0"/>
+            <rect x="46" y="34" width="128" height="140" rx="10" fill="#ffffff" stroke="#bcd8d3" stroke-width="2"/>
+            <path d="M70 66h80M70 88h80M70 110h56" stroke="#7ed6c4" stroke-width="5" stroke-linecap="round"/>
+            <rect x="70" y="132" width="44" height="20" rx="6" fill="#f2b544"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notes -->
+  <section id="notes">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">使用须知</div>
+        <h2>在引用 mrds 资源前需要确认的三件事</h2>
+        <p>资源条目之间授权条件不同，以下说明用于帮助判断适用范围，具体以各条目随包附带的说明为准。</p>
+      </div>
+      <div class="notes">
+        <div class="note">
+          <h3>授权与用途边界</h3>
+          <p>mrds 的公开条目允许用于研究与教学，受限条目需要按条目页的申请流程获取。任何条目都不提供重新识别个体的可能，使用者也不应尝试反向定位。</p>
+          <p>若研究需要二次分发，应回到原条目确认是否允许再分发，而不是以平台名义转授权。</p>
+        </div>
+        <div class="note">
+          <h3>标注口径与版本</h3>
+          <p>同一数据集的不同版本可能调整字段定义或标注粒度。mrds 在版本差异表中保留变更说明，引用时建议同时注明版本号，避免结论与数据版本错配。</p>
+          <p>标注由不同团队完成，类别边界存在差异，跨数据集合并前应先对齐定义。</p>
+        </div>
+        <div class="note">
+          <h3>质量与适用范围</h3>
+          <p>条目页列出采集设备、样本量与已知缺失情况，这些信息决定数据能支撑哪类结论。样本量较小的条目更适合方法验证，而非普遍性推断。</p>
+          <p>平台不对数据适用性作结论性承诺，使用者需自行评估与研究问题的匹配程度。</p>
+        </div>
+        <div class="note" id="about">
+          <h3>关于 mrds 平台</h3>
+          <p>mrds 的定位是把医学数据资源的元信息集中呈现，让检索、比较与下载发生在同一处。平台不托管原始影像文件，条目页提供来源与获取方式说明。</p>
+          <p>条目由提交方维护，平台负责格式规范与版本记录。发现描述与内容不符时，可通过条目页反馈渠道提出修订。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#7ed6c4"/>
+            <circle cx="24" cy="26" r="7" fill="#0a3a4b"/>
+            <circle cx="42" cy="38" r="7" fill="#f2b544"/>
+            <path d="M24 33v9a9 9 0 009 9h2" stroke="#0a3a4b" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </svg>
+          <span>mrds</span>
+        </div>
+        <p>mrds 汇集医学影像与临床文本数据资源的元信息，提供检索、版本记录与下载入口，帮助研究团队在复用前完成判断。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul>
+          <li><a href="#datasets">数据集目录</a></li>
+          <li><a href="#download">资源包下载</a></li>
+          <li><a href="#notes">使用须知</a></li>
+          <li><a href="#about">关于平台</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>条目维护</h4>
+        <ul>
+          <li><a href="#notes">授权条件说明</a></li>
+          <li><a href="#notes">版本差异表</a></li>
+          <li><a href="#about">提交与反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>mrds · 医学数据资源索引</span>
+      <span>条目信息由提交方维护，引用请注明来源与版本</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var q = document.getElementById('q');
+    var grid = document.getElementById('grid');
+    var empty = document.getElementById('empty');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.card'));
+    var activeFilter = 'all';
+
+    function apply(){
+      var term = (q.value || '').trim().toLowerCase();
+      var shown = 0;
+      cards.forEach(function(card){
+        var text = card.textContent.toLowerCase();
+        var tags = card.getAttribute('data-tags') || '';
+        var okTerm = !term || text.indexOf(term) !== -1;
+        var okTag = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
+        var show = okTerm && okTag;
+        card.style.display = show ? '' : 'none';
+        if(show) shown++;
+      });
+      empty.hidden = shown !== 0;
+    }
+
+    q.addEventListener('input', apply);
+    chips.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        activeFilter = btn.getAttribute('data-filter');
+        chips.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        apply();
+      });
+    });
+    apply();
+  })();
+</script>
+</body>
+                </html>

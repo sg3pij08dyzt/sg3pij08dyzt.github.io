@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yandex网页版-俄罗斯搜索引擎在线搜索_俄语搜索_免安装浏览器搜索入口</title>
+<meta name="description" content="yandex网页版在线搜索入口说明：了解俄罗斯搜索引擎网页版的搜索方式、俄语检索、图片与地图服务，以及免安装直接在浏览器中使用的要点。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23e21e26'/%3E%3Ccircle cx='28' cy='28' r='13' fill='none' stroke='%23fff' stroke-width='5'/%3E%3Cline x1='38' y1='38' x2='50' y2='50' stroke='%23fff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --red:#e21e26;
+  --red-dark:#b8111a;
+  --ink:#14161a;
+  --ink-2:#3d444d;
+  --muted:#6b7480;
+  --line:#e6e9ee;
+  --bg:#ffffff;
+  --bg-soft:#f6f7f9;
+  --radius:14px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px;}
+
+/* header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;align-items:center;gap:18px;
+  min-height:64px;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:.2px;}
+.logo-mark{width:32px;height:32px;flex:0 0 auto;}
+.nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap;}
+.nav a{
+  font-size:14px;color:var(--ink-2);padding:7px 12px;border-radius:9px;
+  transition:background .18s,color .18s;
+}
+.nav a:hover{background:var(--bg-soft);color:var(--red-dark);}
+
+/* hero */
+.hero{
+  background:
+    radial-gradient(900px 380px at 88% -10%,rgba(226,30,38,.10),transparent 70%),
+    linear-gradient(180deg,#fbfbfc 0%,#ffffff 100%);
+  border-bottom:1px solid var(--line);
+  padding:54px 0 46px;
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12.5px;font-weight:700;color:var(--red-dark);
+  background:rgba(226,30,38,.08);
+  border:1px solid rgba(226,30,38,.18);
+  padding:4px 12px;border-radius:999px;margin-bottom:16px;
+}
+h1{
+  font-size:clamp(30px,4.4vw,46px);
+  line-height:1.2;margin:0 0 16px;letter-spacing:.5px;font-weight:800;
+}
+h1 .accent{color:var(--red);}
+.hero p.lead{font-size:16.5px;color:var(--ink-2);margin:0 0 22px;max-width:34em;}
+.search-box{
+  display:flex;gap:8px;background:#fff;border:1.5px solid var(--line);
+  border-radius:12px;padding:6px;max-width:520px;
+  box-shadow:0 6px 22px rgba(20,22,26,.06);
+}
+.search-box input{
+  flex:1;border:0;outline:0;font-size:15px;padding:9px 12px;background:transparent;
+  font-family:inherit;color:var(--ink);min-width:0;
+}
+.search-box button{
+  border:0;cursor:pointer;background:var(--red);color:#fff;font-weight:700;
+  font-size:14.5px;padding:10px 20px;border-radius:8px;font-family:inherit;
+  transition:background .18s;
+}
+.search-box button:hover{background:var(--red-dark);}
+.search-note{font-size:12.5px;color:var(--muted);margin:10px 0 0;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 20px;border-radius:10px;font-size:14.5px;font-weight:700;
+  transition:transform .15s,background .18s,border-color .18s;
+}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;transform:translateY(-1px);}
+.btn-ghost{background:#fff;border:1.5px solid var(--line);color:var(--ink-2);}
+.btn-ghost:hover{border-color:#c9cfd8;}
+.hero-visual{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:20px;box-shadow:0 14px 40px rgba(20,22,26,.07);
+}
+.mini-bar{height:9px;border-radius:5px;background:var(--bg-soft);margin-bottom:9px;}
+.mini-bar.w70{width:70%;}
+.mini-bar.w45{width:45%;background:#eef0f3;}
+.mini-bar.w88{width:88%;background:#eef0f3;}
+.mini-bar.w60{width:60%;background:#eef0f3;}
+.visual-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.chip{
+  font-size:12px;font-weight:600;color:var(--ink-2);
+  background:var(--bg-soft);border:1px solid var(--line);
+  padding:4px 10px;border-radius:999px;
+}
+.chip.hot{background:rgba(226,30,38,.08);border-color:rgba(226,30,38,.2);color:var(--red-dark);}
+
+/* sections */
+section{padding:52px 0;}
+section.alt{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.sec-head{max-width:720px;margin-bottom:28px;}
+.sec-kicker{font-size:12.5px;font-weight:800;letter-spacing:1.4px;color:var(--red);text-transform:uppercase;margin-bottom:8px;}
+h2{font-size:clamp(22px,2.8vw,28px);margin:0 0 12px;line-height:1.3;font-weight:800;letter-spacing:.3px;}
+.sec-head p{margin:0;color:var(--ink-2);font-size:15.5px;}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.card:hover{border-color:#d3d9e2;box-shadow:0 10px 28px rgba(20,22,26,.06);transform:translateY(-2px);}
+.card-icon{
+  width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  background:rgba(226,30,38,.09);margin-bottom:14px;
+}
+.card h3{font-size:16.5px;margin:0 0 8px;font-weight:800;}
+.card p{margin:0;font-size:14.3px;color:var(--ink-2);}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step;}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;position:relative;
+}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-size:12px;font-weight:800;color:var(--red);
+  display:block;margin-bottom:8px;letter-spacing:1px;
+}
+.step h3{font-size:16px;margin:0 0 7px;font-weight:800;}
+.step p{margin:0;font-size:14.3px;color:var(--ink-2);}
+
+/* two column */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start;}
+.prose h2{margin-bottom:14px;}
+.prose p{font-size:15.5px;color:var(--ink-2);margin:0 0 14px;}
+.prose p strong{color:var(--ink);font-weight:700;}
+.panel{
+  background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;
+}
+.panel h3{font-size:15px;margin:0 0 14px;font-weight:800;letter-spacing:.2px;}
+dl.facts{margin:0;display:grid;gap:13px;}
+dl.facts div{display:flex;gap:12px;align-items:flex-start;font-size:14px;}
+dl.facts dt{color:var(--muted);flex:0 0 88px;font-weight:600;}
+dl.facts dd{margin:0;color:var(--ink);font-weight:600;}
+
+/* list */
+.qa{display:grid;gap:14px;}
+.qa-item{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;
+}
+.qa-item h3{font-size:15.5px;margin:0 0 6px;font-weight:800;}
+.qa-item p{margin:0;font-size:14.4px;color:var(--ink-2);}
+
+/* download strip */
+.download{
+  background:linear-gradient(135deg,#1a1d22,#2b3038);
+  border-radius:18px;padding:34px;color:#fff;
+  display:flex;gap:26px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+}
+.download h2{color:#fff;margin:0 0 8px;font-size:22px;}
+.download p{margin:0;color:#b9c0cb;font-size:14.5px;max-width:44em;}
+.btn-download{
+  background:#fff;color:var(--ink);padding:12px 26px;border-radius:10px;
+  font-weight:800;font-size:15px;display:inline-flex;align-items:center;gap:8px;
+  pointer-events:none;opacity:.96;
+}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:34px 0 40px;background:#fff;}
+.foot-inner{display:flex;gap:22px;justify-content:space-between;flex-wrap:wrap;align-items:flex-start;}
+.foot-brand{font-weight:800;font-size:15.5px;display:flex;align-items:center;gap:9px;}
+.foot-brand svg{width:24px;height:24px;}
+.foot-note{font-size:13px;color:var(--muted);max-width:46em;margin-top:10px;line-height:1.7;}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--ink-2);}
+.foot-links a:hover{color:var(--red-dark);}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:28px;}
+  .cards,.steps{grid-template-columns:1fr 1fr;}
+  .split{grid-template-columns:1fr;gap:24px;}
+}
+@media (max-width:620px){
+  .header-inner{min-height:auto;padding:12px 0;gap:10px;}
+  .nav{margin-left:0;width:100%;gap:2px;}
+  .nav a{padding:6px 10px;font-size:13.5px;}
+  .hero{padding:36px 0 32px;}
+  .cards,.steps{grid-template-columns:1fr;}
+  .search-box{flex-direction:column;padding:8px;}
+  .search-box button{width:100%;padding:11px;}
+  section{padding:38px 0;}
+  .download{padding:26px 22px;}
+  dl.facts div{flex-direction:column;gap:2px;}
+  dl.facts dt{flex:none;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="yandex网页版">
+      <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#e21e26"/>
+        <circle cx="28" cy="28" r="13" fill="none" stroke="#fff" stroke-width="5"/>
+        <line x1="38" y1="38" x2="50" y2="50" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+      <span>yandex网页版</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#search">搜索方式</a>
+      <a href="#services">服务分区</a>
+      <a href="#howto">使用步骤</a>
+      <a href="#faq">常见问题</a>
+      <a href="#download">下载</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">俄罗斯搜索引擎 · 网页在线使用</span>
+        <h1>yandex网页版</h1>
+        <p class="lead">yandex网页版指在浏览器中直接打开的 Yandex 搜索页面，无需安装客户端即可输入关键词检索网页、图片与地图信息。它常用于俄语内容查找，也可作为跨语言资料搜索的补充入口。</p>
+
+        <form class="search-box" id="search" onsubmit="return goSearch(event);" role="search">
+          <label for="q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">搜索关键词</label>
+          <input id="q" type="search" placeholder="输入关键词，例如：俄语学习 或 莫斯科地图" autocomplete="off">
+          <button type="submit">开始搜索</button>
+        </form>
+        <p class="search-note" id="searchNote">提交后将跳转到 Yandex 搜索页（yandex.com/search），在新标签页打开。</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">查看服务分区</a>
+          <a class="btn btn-ghost" href="#howto">网页版使用步骤</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mini-bar w70"></div>
+        <div class="mini-bar w45"></div>
+        <div class="mini-bar w88"></div>
+        <div class="mini-bar w60"></div>
+        <div class="mini-bar w45"></div>
+        <div class="visual-chips">
+          <span class="chip hot">网页搜索</span>
+          <span class="chip">图片</span>
+          <span class="chip">地图</span>
+          <span class="chip">翻译</span>
+          <span class="chip">俄语结果</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索方式 -->
+  <section id="search-modes">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Search Modes</div>
+        <h2>yandex网页版能搜什么</h2>
+        <p>网页版搜索框是主入口，同一个输入框可承载不同类型的结果。下面三类是最常见的访问需求。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e21e26" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
+          </div>
+          <h3>网页与新闻检索</h3>
+          <p>输入关键词后返回网页链接列表，俄语站点收录较多。适合查找俄语原文报道、机构页面与本地资讯。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e21e26" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg>
+          </div>
+          <h3>图片与视频结果</h3>
+          <p>切换到图片标签可查看缩略图墙，支持按尺寸与颜色筛选。视频标签汇聚合法的公开视频页面。</p>
+        </article>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e21e26" stroke-width="2.2" stroke-linecap="round"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h3>地图与地点信息</h3>
+          <p>Yandex 地图在俄罗斯及周边地区的路网与商户数据较完整，适合核对地址、交通线路与营业时间。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 服务分区 -->
+  <section class="alt" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">Services</div>
+        <h2>yandex网页版的服务分区</h2>
+        <p>除搜索框外，页面顶部的服务入口把常用功能并列展示，可按需进入对应子站。</p>
+      </div>
+      <div class="split">
+        <div class="prose">
+          <h2 style="font-size:19px;">同一账号下的常用入口</h2>
+          <p>打开 yandex网页版 首页后，搜索框上方与页面边栏会列出服务图标。多数子服务与主站共用一个账号体系，登录后可同步搜索历史与收藏内容。</p>
+          <p><strong>翻译与词典</strong>是中文用户使用频率较高的部分，支持俄语与中文互译，适合处理商品说明、新闻标题等短文本。<strong>邮箱与云盘</strong>属于账号类服务，需注册后使用。</p>
+          <p>需要注意，部分服务面向特定地区开放，功能与界面语言会随访问地区变化。以页面实际显示为准，不要预设所有子站都能完整访问。</p>
+        </div>
+        <aside class="panel">
+          <h3>入口一览</h3>
+          <dl class="facts">
+            <div><dt>搜索</dt><dd>主站搜索框，网页/图片/视频</dd></div>
+            <div><dt>地图</dt><dd>地址、路线与商户信息</dd></div>
+            <div><dt>翻译</dt><dd>俄语与中文等多语种互译</dd></div>
+            <div><dt>邮箱</dt><dd>需注册账号后登录</dd></div>
+            <div><dt>云盘</dt><dd>文件存储，随账号开通</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使用步骤 -->
+  <section id="howto">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">How to Use</div>
+        <h2>yandex网页版怎么用：三个步骤</h2>
+        <p>网页版不需要下载安装，浏览器能打开页面即可操作。下面的步骤覆盖从进入页面到筛选结果。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>打开首页</h3>
+          <p>在地址栏输入 yandex.com 或 yandex.ru，进入搜索首页。部分地区访问速度不同，可更换网络环境再试。</p>
+        </div>
+        <div class="step">
+          <h3>输入关键词</h3>
+          <p>中文、俄语、英语均可输入。查俄语资料时用俄语关键词命中率更高；不确定拼写时先用翻译工具确认。</p>
+        </div>
+        <div class="step">
+          <h3>切换与筛选</h3>
+          <p>结果页顶部可切换到图片、视频、地图等标签，并按时间或站点范围缩小结果，减少无关内容。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-kicker">FAQ</div>
+        <h2>关于 yandex网页版 的常见问题</h2>
+        <p>下面是访问者最常提出的几个问题，回答只涉及网页版本身的使用方式。</p>
+      </div>
+      <div class="qa">
+        <div class="qa-item">
+          <h3>需要下载客户端吗？</h3>
+          <p>不需要。yandex网页版在浏览器中直接运行，手机与电脑都能使用。是否安装 App 属于个人选择，与网页版搜索无关。</p>
+        </div>
+        <div class="qa-item">
+          <h3>搜索结果为什么多为俄语？</h3>
+          <p>Yandex 的主要市场在俄语地区，索引中俄语页面占比较高。用中文提问时，可尝试在关键词后加上地名或机构名，缩小范围。</p>
+        </div>
+        <div class="qa-item">
+          <h3>网页版和登录账号有什么区别？</h3>
+          <p>不登录也能搜索。登录后可保存历史、使用邮箱与云盘等账号服务；具体可用功能以账号所在地区的实际页面为准。</p>
+        </div>
+        <div class="qa-item">
+          <h3>图片和地图能直接使用吗？</h3>
+          <p>可以进入对应标签浏览。图片版权归原站点所有，转载前需确认授权；地图信息会随更新变化，出行前建议二次核对。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- download strip -->
+  <section id="download">
+    <div class="wrap">
+      <div class="download">
+        <div>
+          <h2>yandex网页版 使用备忘</h2>
+          <p>把常用入口记在浏览器书签里，比反复搜索更省时间。下方按钮用于后续提供桌面快捷方式文件，当前暂未开放。</p>
+        </div>
+        <a class="btn-download" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 20h16"/></svg>
+          下载
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#e21e26"/>
+          <circle cx="28" cy="28" r="13" fill="none" stroke="#fff" stroke-width="5"/>
+          <line x1="38" y1="38" x2="50" y2="50" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <span>yandex网页版</span>
+      </div>
+      <p class="foot-note">本页为 yandex网页版 的在线使用说明页，整理搜索入口、服务分区与常见问题，帮助访问者快速上手网页版搜索。页面内容仅作使用方式说明，搜索服务本身由 Yandex 提供。</p>
+    </div>
+    <nav class="foot-links" aria-label="页尾导航">
+      <a href="#search">搜索方式</a>
+      <a href="#services">服务分区</a>
+      <a href="#howto">使用步骤</a>
+      <a href="#faq">常见问题</a>
+      <a href="https://yandex.com/" target="_blank" rel="noopener">Yandex 官网</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function goSearch(e){
+  e.preventDefault();
+  var q = document.getElementById('q').value.trim();
+  var note = document.getElementById('searchNote');
+  if(!q){
+    note.textContent = '请先输入关键词，再点击开始搜索。';
+    return false;
+  }
+  var url = 'https://yandex.com/search/?text=' + encodeURIComponent(q);
+  window.open(url, '_blank', 'noopener');
+  note.textContent = '已在新标签页打开搜索结果：' + q;
+  return false;
+}
+</script>
+</body>
+</html>

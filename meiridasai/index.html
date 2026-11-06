@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日大赛yandex电脑版-每日大赛yandex电脑版热点内容_黑料爆料吃瓜</title>
+<meta name="description" content="每日大赛yandex电脑版热点内容页，汇总每日大赛yandex电脑版相关的吃瓜爆料与网络热议条目，按主题分区呈现，方便电脑端快速浏览当日热点。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161a24'/%3E%3Cpath d='M16 44 L32 16 L48 44 Z' fill='none' stroke='%23ff6a3d' stroke-width='4' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='36' r='4' fill='%23ffd166'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#11141c;
+    --bg-soft:#181c27;
+    --card:#1d2230;
+    --line:#2b3244;
+    --text:#e8ebf3;
+    --muted:#9aa3b8;
+    --accent:#ff6a3d;
+    --accent-2:#ffd166;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px;}
+
+  /* header */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(17,20,28,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .head-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;min-height:66px;
+  }
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.2px;}
+  .logo .mark{width:34px;height:34px;flex:0 0 auto;}
+  .logo span.brand{color:var(--text);}
+  nav.main ul{display:flex;gap:22px;list-style:none;font-size:14.5px;color:var(--muted);}
+  nav.main a:hover,nav.main a:focus{color:var(--accent-2);}
+  .nav-toggle{display:none;}
+
+  /* hero */
+  .hero{
+    padding:56px 0 40px;
+    background:
+      radial-gradient(760px 320px at 82% -10%, rgba(255,106,61,.20), transparent 70%),
+      radial-gradient(560px 260px at 8% 10%, rgba(255,209,102,.10), transparent 70%);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:44px;align-items:center;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:1.4px;color:var(--accent-2);
+    border:1px solid rgba(255,209,102,.35);
+    padding:4px 12px;border-radius:999px;margin-bottom:18px;
+  }
+  .kicker i{width:6px;height:6px;border-radius:50%;background:var(--accent);display:block;}
+  h1{
+    font-size:clamp(26px,3.6vw,40px);
+    line-height:1.3;font-weight:800;letter-spacing:.2px;
+    margin-bottom:18px;
+  }
+  h1 .hl{
+    background:linear-gradient(180deg,transparent 62%,rgba(255,106,61,.38) 62%);
+    padding:0 2px;
+  }
+  .lede{color:var(--muted);font-size:15.5px;max-width:44ch;margin-bottom:26px;}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-size:14.5px;font-weight:600;
+    border:1px solid transparent;transition:.2s;
+  }
+  .btn-primary{background:var(--accent);color:#160f0b;}
+  .btn-primary:hover{background:#ff8259;}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:var(--bg-soft);}
+  .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
+  .hero-art{position:relative;}
+  .hero-art svg{width:100%;height:auto;}
+
+  /* section common */
+  section{padding:52px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:26px;flex-wrap:wrap;}
+  .sec-head h2{font-size:22px;font-weight:750;letter-spacing:.3px;}
+  .sec-head p{color:var(--muted);font-size:14px;max-width:56ch;}
+  .tag{font-size:12px;color:var(--accent-2);border:1px solid rgba(255,209,102,.3);border-radius:999px;padding:2px 10px;}
+
+  /* hot list */
+  .hot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 20px;display:flex;flex-direction:column;gap:12px;
+    transition:.2s;
+  }
+  .card:hover{border-color:#3b445b;transform:translateY(-2px);}
+  .card .no{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;}
+  .card h3{font-size:16.5px;line-height:1.5;font-weight:700;}
+  .card p{font-size:14px;color:var(--muted);}
+  .card .meta{margin-top:auto;font-size:12.5px;color:#6f7a92;display:flex;gap:10px;flex-wrap:wrap;}
+
+  /* filter */
+  .filter-bar{
+    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);
+    padding:14px 16px;margin-bottom:22px;
+  }
+  .filter-bar label{font-size:13px;color:var(--muted);}
+  .filter-bar input[type=search]{
+    flex:1 1 220px;min-width:160px;
+    background:#12151d;border:1px solid var(--line);border-radius:999px;
+    color:var(--text);padding:9px 16px;font-size:14px;outline:none;
+  }
+  .filter-bar input[type=search]:focus{border-color:var(--accent);}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{
+    font-size:13px;padding:6px 14px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--line);color:var(--muted);background:transparent;
+    transition:.2s;font-family:inherit;
+  }
+  .chip.active,.chip:hover{border-color:var(--accent);color:var(--accent-2);}
+  .feed{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .feed-item{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 20px;
+  }
+  .feed-item h3{font-size:15.5px;margin-bottom:8px;}
+  .feed-item p{font-size:13.8px;color:var(--muted);}
+  .feed-item .tagline{font-size:12px;color:var(--accent-2);margin-top:10px;display:inline-block;}
+  .empty-note{display:none;padding:26px 0;color:var(--muted);font-size:14px;}
+
+  /* guide / columns */
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .col-block h3{font-size:16px;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .col-block h3 svg{width:20px;height:20px;flex:0 0 auto;}
+  .col-block p{font-size:14px;color:var(--muted);}
+
+  /* about text */
+  .prose{max-width:76ch;}
+  .prose p{font-size:15px;color:#c3cadb;margin-bottom:14px;}
+  .prose strong{color:var(--text);}
+
+  /* download */
+  .dl-box{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+    background:linear-gradient(120deg,#1c2130,#171b25);
+    border:1px solid var(--line);border-radius:18px;padding:26px 28px;
+  }
+  .dl-box h2{font-size:19px;margin-bottom:6px;}
+  .dl-box p{font-size:14px;color:var(--muted);max-width:52ch;}
+  .btn-dl{
+    background:var(--accent-2);color:#1a1406;font-weight:700;
+    pointer-events:none;opacity:.92;
+  }
+
+  /* footer */
+  footer.site{
+    border-top:1px solid var(--line);padding:34px 0 44px;
+    color:var(--muted);font-size:13.5px;
+  }
+  .foot-inner{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:flex-start;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-links a:hover{color:var(--accent-2);}
+  .foot-note{max-width:52ch;line-height:1.7;}
+  .foot-brand{font-weight:700;color:var(--text);margin-bottom:6px;}
+
+  @media (max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1;max-width:340px;margin:0 auto;}
+    .hot-grid{grid-template-columns:1fr 1fr;}
+    .cols{grid-template-columns:1fr;}
+    .feed{grid-template-columns:1fr;}
+  }
+  @media (max-width:640px){
+    .head-inner{flex-wrap:wrap;padding:10px 0;gap:10px;}
+    nav.main ul{gap:16px;font-size:13.5px;flex-wrap:wrap;}
+    .hero{padding:34px 0 30px;}
+    .hot-grid{grid-template-columns:1fr;}
+    section{padding:38px 0;}
+    .lede{font-size:14.5px;}
+    .dl-box{padding:20px;}
+  }
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="每日大赛yandex电脑版首页">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#1d2230"/>
+        <path d="M16 44 L32 16 L48 44 Z" fill="none" stroke="#ff6a3d" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="32" cy="36" r="4" fill="#ffd166"/>
+      </svg>
+      <span class="brand">每日大赛yandex电脑版</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <ul>
+        <li><a href="#today">今日热点</a></li>
+        <li><a href="#feed">吃瓜条目</a></li>
+        <li><a href="#read">浏览要点</a></li>
+        <li><a href="#download">获取入口</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker"><i></i>热点内容首页</div>
+        <h1>每日大赛yandex电脑版</h1>
+        <p class="lede">把每天流传的吃瓜与爆料条目集中到一页，按主题归类、按热度排列，在电脑端一屏之内看清当日讨论走向。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#today">查看今日热点</a>
+          <a class="btn btn-ghost" href="#feed">按主题筛选</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 320" role="presentation">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ff6a3d" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#ffd166" stop-opacity=".7"/>
+            </linearGradient>
+          </defs>
+          <rect x="26" y="30" width="368" height="230" rx="16" fill="#181c27" stroke="#2b3244"/>
+          <rect x="46" y="52" width="120" height="10" rx="5" fill="url(#g1)"/>
+          <rect x="46" y="74" width="200" height="8" rx="4" fill="#2b3244"/>
+          <rect x="46" y="100" width="150" height="60" rx="10" fill="#1d2230" stroke="#2b3244"/>
+          <rect x="212" y="100" width="150" height="60" rx="10" fill="#1d2230" stroke="#2b3244"/>
+          <rect x="46" y="174" width="150" height="60" rx="10" fill="#1d2230" stroke="#2b3244"/>
+          <rect x="212" y="174" width="150" height="60" rx="10" fill="#1d2230" stroke="#2b3244"/>
+          <circle cx="66" cy="118" r="8" fill="#ff6a3d"/>
+          <circle cx="232" cy="118" r="8" fill="#ffd166"/>
+          <circle cx="66" cy="192" r="8" fill="#ffd166"/>
+          <circle cx="232" cy="192" r="8" fill="#ff6a3d"/>
+          <rect x="84" y="112" width="90" height="7" rx="3.5" fill="#3b445b"/>
+          <rect x="250" y="112" width="90" height="7" rx="3.5" fill="#3b445b"/>
+          <rect x="84" y="186" width="90" height="7" rx="3.5" fill="#3b445b"/>
+          <rect x="250" y="186" width="90" height="7" rx="3.5" fill="#3b445b"/>
+          <rect x="46" y="278" width="330" height="12" rx="6" fill="#1d2230" stroke="#2b3244"/>
+          <rect x="46" y="278" width="180" height="12" rx="6" fill="url(#g1)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 今日热点 -->
+  <section id="today">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>今日热点分区</h2>
+          <p>每日大赛yandex电脑版的热点不只是一条消息，而是围绕同一条目衍生出的多方说法。以下分区按讨论密度排列。</p>
+        </div>
+        <span class="tag">按讨论密度</span>
+      </div>
+      <div class="hot-grid">
+        <article class="card">
+          <div class="no">01 / 热议</div>
+          <h3>条目来源与时间线</h3>
+          <p>先看消息从哪来、几点开始扩散、最初版本说了什么，再对照后续补充，判断信息是否被改写。</p>
+          <div class="meta"><span>时间线</span><span>来源核对</span></div>
+        </article>
+        <article class="card">
+          <div class="no">02 / 对比</div>
+          <h3>多方说法差异</h3>
+          <p>同一事件常出现截然不同的描述，把各方原话并列摆放，差异点与重合点会自然浮现。</p>
+          <div class="meta"><span>并列对照</span><span>原话保留</span></div>
+        </article>
+        <article class="card">
+          <div class="no">03 / 观察</div>
+          <h3>评论区走向</h3>
+          <p>讨论热度与情绪变化往往比正文更能说明问题：哪些细节被反复追问，哪些说法先被接受又被推翻。</p>
+          <div class="meta"><span>情绪曲线</span><span>追问焦点</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 吃瓜条目 + 筛选 -->
+  <section id="feed">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>吃瓜条目列表</h2>
+          <p>输入关键词或选择分类，即可在当前页面内筛选条目。内容直接写在页面里，不依赖额外请求。</p>
+        </div>
+      </div>
+
+      <div class="filter-bar" role="search">
+        <label for="q">筛选条目</label>
+        <input id="q" type="search" placeholder="输入关键词，如：时间线、说法、评论" autocomplete="off">
+        <div class="chips" id="chips">
+          <button class="chip active" data-cat="all" type="button">全部</button>
+          <button class="chip" data-cat="timeline" type="button">时间线</button>
+          <button class="chip" data-cat="claim" type="button">说法对照</button>
+          <button class="chip" data-cat="talk" type="button">评论区</button>
+        </div>
+      </div>
+
+      <div class="feed" id="feedList">
+        <article class="feed-item" data-cat="timeline">
+          <h3>首发时间与二次扩散</h3>
+          <p>同一条目常出现两个时间点：原始发布与集中转发。把两者分开记录，能看出热度是被自然带起还是被人为推高。</p>
+          <span class="tagline">时间线</span>
+        </article>
+        <article class="feed-item" data-cat="claim">
+          <h3>标题与内文的落差</h3>
+          <p>部分条目标题写得极重，正文却只有几句推测。对照标题用词与内文证据，是判断可信度最直接的一步。</p>
+          <span class="tagline">说法对照</span>
+        </article>
+        <article class="feed-item" data-cat="talk">
+          <h3>高频追问的三个细节</h3>
+          <p>评论里被反复提及的细节，往往正是信息缺口所在。整理这些追问，比追逐新说法更有价值。</p>
+          <span class="tagline">评论区</span>
+        </article>
+        <article class="feed-item" data-cat="timeline">
+          <h3>旧内容重新翻出</h3>
+          <p>有些条目是数周前的旧内容换了标题再度流传。核对原始发布时间，可避免把旧事当成新料。</p>
+          <span class="tagline">时间线</span>
+        </article>
+        <article class="feed-item" data-cat="claim">
+          <h3>截图与转述的偏差</h3>
+          <p>截图被裁切、转述被简化，都会改变原意。看到结论性表述时，先找完整版本再下判断。</p>
+          <span class="tagline">说法对照</span>
+        </article>
+        <article class="feed-item" data-cat="talk">
+          <h3>讨论降温的信号</h3>
+          <p>当追问不再增加、回复转向调侃，通常意味着这一轮热度接近尾声。观察降温节奏，有助于安排浏览时间。</p>
+          <span class="tagline">评论区</span>
+        </article>
+      </div>
+      <p class="empty-note" id="emptyNote">没有匹配的条目，换个关键词或切换分类试试。</p>
+    </div>
+  </section>
+
+  <!-- 浏览要点 -->
+  <section id="read">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2>电脑端浏览要点</h2>
+          <p>每日大赛yandex电脑版更适合在宽屏下逐条比对：多栏并列、原文留白、时间线横向铺开，都比窄屏更清楚。</p>
+        </div>
+        <span class="tag">宽屏阅读</span>
+      </div>
+      <div class="cols">
+        <div class="col-block">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>
+            多栏并列
+          </h3>
+          <p>宽屏可同时展开多个条目，左右对照说法差异，不必来回滚动切换，阅读节奏更连贯。</p>
+        </div>
+        <div class="col-block">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ffd166" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            时间顺序
+          </h3>
+          <p>按时间排列条目，先看原始发布，再看后续补充，能清楚分出事实层与推测层。</p>
+        </div>
+        <div class="col-block">
+          <h3>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#ff6a3d" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15l3-4 3 2 4-6"/></svg>
+            热度记录
+          </h3>
+          <p>记录每个条目的讨论量变化，比单看某一天的峰值更能判断它在整轮热点中的位置。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 正文说明 -->
+  <section id="about">
+    <div class="wrap prose">
+      <h2 style="font-size:21px;margin-bottom:16px;">每日大赛yandex电脑版都在看什么</h2>
+      <p><strong>每日大赛yandex电脑版</strong>这一页的核心，是把当天在网络上流传的吃瓜与爆料条目收拢到同一处。访问者通常带着两个目的而来：一是快速知道今天有哪些条目在讨论，二是想看清这些条目各自的来路与说法差异。因此页面不追求铺满信息，而是把条目、时间与讨论线索并排放置。</p>
+      <p>在电脑端打开每日大赛yandex电脑版，宽屏能同时容纳更多栏目。左侧看条目，右侧看对照，中间留给时间顺序，三者互不挤压。对于需要反复比对的内容，这种排布比单列滚动更省力，也更容易发现同一事件中被忽略的细节。</p>
+      <p>关于条目本身，页面的态度是保留原话、标注来源层级。哪些是当事人表态，哪些是转述，哪些只是评论区的推测，分别写在对应位置，不混为一谈。每日大赛yandex电脑版不替访问者下结论，只把可核对的部分摆清楚，让判断留在阅读之后。</p>
+      <p>热度会退，条目会旧。每日大赛yandex电脑版在更新时保留时间标注，旧内容重新被翻出时能一眼识别。这样浏览时就不会把数周前的消息误当成当天新料，也不必为重复内容反复阅读。</p>
+    </div>
+  </section>
+
+  <!-- 下载入口 -->
+  <section id="download">
+    <div class="wrap">
+      <div class="dl-box">
+        <div>
+          <h2>获取每日大赛yandex电脑版入口</h2>
+          <p>下载文件用于在电脑端保存本页的条目索引，便于离线回看时间线与分类列表。当前下载地址尚未接入，按钮暂不可用。</p>
+        </div>
+        <a class="btn btn-dl" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap foot-inner">
+    <div>
+      <div class="foot-brand">每日大赛yandex电脑版</div>
+      <p class="foot-note">热点内容首页，按主题归类呈现吃瓜与爆料条目，保留时间与说法差异，供电脑端宽屏浏览。</p>
+    </div>
+    <div class="foot-links">
+      <a href="#today">今日热点</a>
+      <a href="#feed">吃瓜条目</a>
+      <a href="#read">浏览要点</a>
+      <a href="#download">获取入口</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('q');
+  var chips = document.querySelectorAll('#chips .chip');
+  var items = document.querySelectorAll('#feedList .feed-item');
+  var empty = document.getElementById('emptyNote');
+  var cat = 'all';
+
+  function apply(){
+    var kw = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    items.forEach(function(el){
+      var okCat = (cat === 'all') || (el.getAttribute('data-cat') === cat);
+      var text = el.textContent.toLowerCase();
+      var okKw = !kw || text.indexOf(kw) !== -1;
+      var show = okCat && okKw;
+      el.style.display = show ? '' : 'none';
+      if(show) shown++;
+    });
+    empty.style.display = shown ? 'none' : 'block';
+  }
+
+  input.addEventListener('input', apply);
+  chips.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      chips.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      cat = btn.getAttribute('data-cat');
+      apply();
+    });
+  });
+})();
+</script>
+
+</body>
+  </html>
